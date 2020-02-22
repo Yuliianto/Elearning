@@ -1,0 +1,60 @@
+{% extends "layout-private.html" %}
+
+{% block title %}
+Tahun Ajaran - {{ parent() }}
+{% endblock %}
+
+{% block content %}
+<div class="module">
+    <div class="module-head">
+        <div class="bs-callout bs-callout-info">
+            <div class="pull-left">
+                <h3>Tahun Ajaran</h3>
+            </div>
+            {% if is_siswa() == false %}
+            <div class="btn-group pull-right" style="margin-top:-5px;">
+                {{ anchor('ajaran/add', 'Tambah Tahun Ajaran', {'class' : 'btn btn-primary'})|raw }}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+    <div class="module-body">
+        <table class="table table-striped">
+            <thead>
+                <tr>
+                    <th width="7%">No</th>
+                    <th>Tahun Ajaran</th>
+                    <th width="14.3%">Tahun Akademi</th>
+                    <th>Semester</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for no, m in ajaran %}
+                <tr>
+                    <td>{{ loop.index }}</td>
+                    <td>
+                        {{ m.tahun_ajaran }}
+                    </td>
+                    <td>
+                        {{ m.tahun }}
+                    </td>
+                    <td>
+                        {% if m.semester_ajaran == 'ganjil' %}
+                        <span class=" label label-warning">Ganjil</span>
+                        {% elseif m.semester_ajaran == 'genap' %}
+                        <span class="label label-success">Genap</span>
+                        {% endif %}
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            {{ anchor('ajaran/detail/' ~ m.semester_ajaran ~'/' ~ m.tahun, '<i class="icon-eye-open"></i> Lihat Detail', {'class' : 'btn btn-info btn-small'})|raw }}
+                            {{ anchor('ajaran/delete/' ~ m.id, '<i class="icon-trash"></i> Hapus', {'class' : 'btn btn-default btn-small'})|raw }}
+                        </div>
+                    </td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+</div>
+{% endblock %}

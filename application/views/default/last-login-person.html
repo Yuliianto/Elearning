@@ -1,0 +1,21 @@
+<table class="table table-striped table-condensed">
+{% for l in last_login_data %}
+<tr>
+    <td>
+        <span class="pull-right text-muted">
+        {% if l.timeago is not empty %}
+            <time class="timeato" datetime="{{ l.timeago }}">{{ l.lasttime }}</time>
+        {% else %}
+            {{ l.lasttime }}
+        {% endif %}
+
+        </span>
+        <a href="{{ l.user.link_profil }}">{{ l.user.nama }}</a>
+
+        {% if l.online is not empty %}
+            <span style="color: #0f0;">&nbsp;Online&nbsp;</span>
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+</table>

@@ -1,0 +1,5 @@
+1. tambahi menu tahun ajaran ning halaman admin
+2. ning njero menu kue gunane go ndeleng materi2 karo tugas2 sing wis digawe ding pengajar
+   *(berdasarkan tahun ajaran misal semester genap/ganjil tahun 2019 apa thun 2020 tugas karo materi sing digawe apa bae ning kono bisa kebuka)
+3. karo ditambahi tomnol hapus ning njero menu tahun ajaran ben bisa ngehapus materi/tugas
+4. tambahi 1 tabel nggo ndokon datane kue
