@@ -13,7 +13,14 @@ class Login_model extends CI_Model
      */
     public function retrieve_new_log($limit = 10)
     {
-        $session_id = $_SESSION['login_e-learning']['pengajar']['login']['id'];
+        if (!empty($_SESSION['login_e-learning']['pengajar'])) {
+            $session_id = $_SESSION['login_e-learning']['pengajar']['login']['id'];
+        }else if (!empty($_SESSION['login_e-learning']['siswa'])){
+            $session_id = $_SESSION['login_e-learning']['siswa']['login']['id'];    
+        }else{
+            $session_id = $_SESSION['login_e-learning']['admin']['login']['id'];    
+        }
+        
         $get_last=  $this->retrieve_last_log($session_id);
         $id = $get_last['id'];
         $user_id = $get_last['login_id'];
